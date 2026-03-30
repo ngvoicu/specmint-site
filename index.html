@@ -467,6 +467,120 @@
       vertical-align: middle;
     }
 
+    /* --- PREVIEW --- */
+    .preview { border-top: 1px solid var(--border) }
+    .preview-tabs {
+      display: flex; gap: 0; margin-top: 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .preview-tab {
+      padding: 0.75rem 1.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: var(--text-muted);
+      cursor: pointer;
+      border: none; background: none;
+      font-family: var(--mono);
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .preview-tab:hover { color: var(--text-dim) }
+    .preview-tab.active {
+      color: var(--mint);
+      border-bottom-color: var(--mint);
+    }
+    .preview-panel {
+      display: none;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 12px 12px;
+      background: var(--bg-card);
+      overflow: hidden;
+    }
+    .preview-panel.active { display: block }
+    .preview-code {
+      padding: 2rem;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      line-height: 1.8;
+      color: var(--text-dim);
+      overflow-x: auto;
+      white-space: pre;
+    }
+    .preview-code .hl-key { color: var(--mint) }
+    .preview-code .hl-val { color: #a78bfa }
+    .preview-code .hl-h1 { color: var(--text); font-weight: 600 }
+    .preview-code .hl-h2 { color: var(--text); font-weight: 500 }
+    .preview-code .hl-comment { color: var(--text-muted); font-style: italic }
+    .preview-code .hl-check { color: var(--mint) }
+    .preview-code .hl-uncheck { color: var(--text-muted) }
+    .preview-code .hl-marker { color: #fb923c }
+    .preview-code .hl-status { color: #38bdf8 }
+
+    /* --- FLOW --- */
+    .flow { border-top: 1px solid var(--border) }
+    .flow-visual {
+      margin-top: 4rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--bg-card);
+      padding: 3rem 2.5rem;
+      overflow-x: auto;
+    }
+    .flow-timeline {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      min-width: 900px;
+      position: relative;
+    }
+    .flow-timeline::before {
+      content: '';
+      position: absolute;
+      top: 22px; left: 32px; right: 32px;
+      height: 2px;
+      background: var(--border);
+    }
+    .flow-step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      padding: 0 0.5rem;
+    }
+    .flow-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--mint);
+      margin: 16px auto 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .flow-dot.dim { background: var(--text-muted); opacity: 0.5 }
+    .flow-dot.orange { background: #fb923c }
+    .flow-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .flow-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .flow-spec {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      margin-bottom: 0.375rem;
+    }
+    .flow-spec.a { background: rgba(52,211,153,0.15); color: var(--mint) }
+    .flow-spec.b { background: rgba(167,139,250,0.15); color: #a78bfa }
+
     /* --- COMPARE --- */
     .compare { border-top: 1px solid var(--border) }
     .compare-table-wrap {
@@ -642,6 +756,7 @@
   <div class="nav-links">
     <a href="#workflow" onclick="closeMenu()">Workflow</a>
     <a href="#plugins" onclick="closeMenu()">Plugins</a>
+    <a href="#preview" onclick="closeMenu()">Preview</a>
     <a href="#compare" onclick="closeMenu()">Compare</a>
     <a href="#install" onclick="closeMenu()">Install</a>
   </div>
@@ -699,7 +814,7 @@
       <div class="wf-step">
         <div class="wf-num">01</div>
         <h3>Deep Research</h3>
-        <p>Exhaustive codebase analysis, library comparisons, Context7 docs, web research. An Opus-powered subagent reads 15-30 files and runs parallel searches.</p>
+        <p>Exhaustive codebase analysis, library comparisons, documentation lookups, web research. A dedicated subagent reads 15-30 files and runs parallel searches.</p>
       </div>
       <div class="wf-step">
         <div class="wf-num">02</div>
@@ -741,12 +856,12 @@
           Persistent specs with phases, tasks, and a registry that tracks everything.
         </p>
         <ul class="plugin-features">
-          <li>Opus-powered researcher subagent for exhaustive codebase analysis</li>
-          <li>Context7 integration for up-to-date library documentation</li>
+          <li>Deep researcher subagent for exhaustive codebase and web analysis</li>
           <li>Architecture diagrams, library comparison tables, testing strategy</li>
           <li>Self-review checklist: placeholder, consistency, scope, and ambiguity checks</li>
           <li>Phase-level review and verification gates before completion</li>
-          <li>Live TUI progress tracking in Claude Code</li>
+          <li>Live progress tracking with task checkboxes</li>
+          <li>Resume context: pick up exactly where you left off, across sessions and tools</li>
           <li>8 commands: forge, implement, resume, pause, switch, list, status, openapi</li>
         </ul>
       </div>
@@ -768,6 +883,245 @@
           <li>Tests Are Sacred: never modify assertions to match code</li>
           <li>Language-agnostic testing reference for 6+ languages</li>
         </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREVIEW -->
+<section class="preview" id="preview">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">What gets created</div>
+      <h2 class="section-title">Real files, not ephemeral plans</h2>
+      <p class="section-desc">
+        Every spec lives in a <code>.specs/</code> directory as plain markdown. Browse, edit, diff, commit &mdash; they're just files.
+      </p>
+    </div>
+    <div class="reveal">
+      <div class="preview-tabs">
+        <button class="preview-tab active" onclick="showTab('spec-core')">SPEC.md (Core)</button>
+        <button class="preview-tab" onclick="showTab('spec-tdd')">SPEC.md (TDD)</button>
+        <button class="preview-tab" onclick="showTab('research')">research-01.md</button>
+        <button class="preview-tab" onclick="showTab('interview')">interview-01.md</button>
+        <button class="preview-tab" onclick="showTab('registry')">registry.md</button>
+      </div>
+
+      <div class="preview-panel active" id="panel-spec-core">
+        <div class="preview-code"><span class="hl-comment">---</span>
+<span class="hl-key">id:</span> <span class="hl-val">user-auth-system</span>
+<span class="hl-key">title:</span> <span class="hl-val">User Auth System</span>
+<span class="hl-key">status:</span> <span class="hl-val">active</span>
+<span class="hl-key">created:</span> <span class="hl-val">2026-03-28</span>
+<span class="hl-key">updated:</span> <span class="hl-val">2026-03-30</span>
+<span class="hl-key">priority:</span> <span class="hl-val">high</span>
+<span class="hl-comment">---</span>
+
+<span class="hl-h1"># User Auth System</span>
+
+<span class="hl-h2">## Overview</span>
+Add JWT-based authentication to the Express.js API.
+Includes registration, login, token refresh, and
+protected route middleware.
+
+<span class="hl-h2">## Acceptance Criteria</span>
+<span class="hl-check">- [x]</span> Users can register with email and password
+<span class="hl-check">- [x]</span> Passwords are hashed with argon2
+<span class="hl-uncheck">- [ ]</span> JWT access tokens expire after 15 minutes
+<span class="hl-uncheck">- [ ]</span> Refresh token rotation on each refresh
+
+<span class="hl-h2">## Phase 1: Auth Foundation <span class="hl-status">[completed]</span></span>
+<span class="hl-check">- [x] [AUTH-01]</span> Create auth middleware in src/middleware/auth.ts
+<span class="hl-check">- [x] [AUTH-02]</span> Create User model with Prisma schema
+<span class="hl-check">- [x] [AUTH-03]</span> Token generation utilities in src/auth/tokens.ts
+<span class="hl-check">- [x] [AUTH-04]</span> POST /auth/register endpoint
+
+<span class="hl-h2">## Phase 2: Login &amp; Refresh <span class="hl-status">[in-progress]</span></span>
+<span class="hl-check">- [x] [AUTH-05]</span> POST /auth/login with password verification
+<span class="hl-uncheck">- [ ] [AUTH-06]</span> POST /auth/refresh with token rotation <span class="hl-marker">&larr; current</span>
+<span class="hl-uncheck">- [ ] [AUTH-07]</span> POST /auth/logout endpoint
+
+<span class="hl-h2">## Resume Context</span>
+<span class="hl-comment">&gt; Implementing token refresh in src/auth/tokens.ts.</span>
+<span class="hl-comment">&gt; The verifyRefreshToken() function needs to check</span>
+<span class="hl-comment">&gt; the stored token hash and rotate on success.</span>
+<span class="hl-comment">&gt; Next: write the /auth/refresh route handler.</span></div>
+      </div>
+
+      <div class="preview-panel" id="panel-spec-tdd">
+        <div class="preview-code"><span class="hl-comment">---</span>
+<span class="hl-key">id:</span> <span class="hl-val">payment-processing</span>
+<span class="hl-key">title:</span> <span class="hl-val">Payment Processing</span>
+<span class="hl-key">status:</span> <span class="hl-val">active</span>
+<span class="hl-comment">---</span>
+
+<span class="hl-h1"># Payment Processing</span>
+
+<span class="hl-h2">## Testing Architecture</span>
+| Framework   | Vitest 2.1        |
+| Isolation   | Testcontainers    |
+| Coverage    | c8, target 85%    |
+| Mocking     | msw for HTTP only |
+
+<span class="hl-h2">## Phase 1: Checkout <span class="hl-status">[in-progress]</span></span>
+<span class="hl-check">- [x] [TEST-PAY-01]</span> Write checkout session tests
+<span class="hl-check">- [x] [IMPL-PAY-02]</span> Implement checkout session <span class="hl-comment">&rarr; satisfies [TEST-PAY-01]</span>
+<span class="hl-uncheck">- [ ] [TEST-PAY-03]</span> Write webhook handler tests <span class="hl-marker">&larr; current</span>
+<span class="hl-uncheck">- [ ] [IMPL-PAY-04]</span> Implement webhook handler <span class="hl-comment">&rarr; satisfies [TEST-PAY-03]</span>
+
+<span class="hl-h2">## TDD Log</span>
+| Task           | Red (failing)             | Green (passing)        | Refactor     |
+|----------------|---------------------------|------------------------|--------------|
+| [TEST-PAY-01]  | 4 tests, 4 failed         | &mdash;                | &mdash;      |
+| [IMPL-PAY-02]  | &mdash;                   | 4 passed, 0 failed     | Extract config|
+
+<span class="hl-h2">## Resume Context</span>
+<span class="hl-comment">&gt; TDD phase: RED. Writing webhook handler tests in</span>
+<span class="hl-comment">&gt; tests/payments/webhook.test.ts. Need to test</span>
+<span class="hl-comment">&gt; signature verification, idempotency, and event</span>
+<span class="hl-comment">&gt; routing for checkout.session.completed.</span></div>
+      </div>
+
+      <div class="preview-panel" id="panel-research">
+        <div class="preview-code"><span class="hl-h1"># Research Notes &mdash; User Auth System</span>
+<span class="hl-h2">## Date: 2026-03-28</span>
+
+<span class="hl-h2">## Project Architecture</span>
+Express.js API with TypeScript, src/ directory structure,
+Prisma ORM with PostgreSQL. App Router pattern with
+controllers in src/routes/, middleware in src/middleware/.
+
+<span class="hl-h2">## Relevant Code</span>
+- src/routes/users.ts &mdash; existing user CRUD (no auth)
+- src/middleware/cors.ts &mdash; CORS setup, pattern to follow
+- prisma/schema.prisma &mdash; User model exists, no password field
+- tests/integration/ &mdash; supertest-based, Jest runner
+
+<span class="hl-h2">## Library Comparison</span>
+| Need    | Pick         | Alternative | Rationale              |
+|---------|-------------|-------------|------------------------|
+| JWT     | jsonwebtoken | jose        | Simpler API, widely used|
+| Hashing | argon2       | bcrypt      | GPU-resistant, OWASP   |
+| Validation | zod       | joi, yup    | TypeScript-native      |
+
+<span class="hl-h2">## Risk Assessment</span>
+- Token storage: refresh tokens in DB, not cookies
+- Rate limiting needed on /auth/login to prevent brute force
+- Password reset flow is out of scope for this spec
+
+<span class="hl-h2">## Open Questions</span>
+- Should refresh tokens be stored hashed or plain?
+- Session invalidation strategy: single device or multi?</div>
+      </div>
+
+      <div class="preview-panel" id="panel-interview">
+        <div class="preview-code"><span class="hl-h1"># Interview Round 1 &mdash; User Auth System</span>
+<span class="hl-h2">## Date: 2026-03-28</span>
+
+<span class="hl-h2">## Questions Asked</span>
+
+1. The codebase uses Express middleware pattern for CORS.
+   Should auth follow the same pattern as a middleware?
+   <span class="hl-key">Answer:</span> <span class="hl-val">Yes, same pattern. Middleware in src/middleware/.</span>
+
+2. Prisma User model has no password field yet. Add it
+   directly or create a separate Credentials model?
+   <span class="hl-key">Answer:</span> <span class="hl-val">Add passwordHash directly to User. Keep it simple.</span>
+
+3. Should refresh tokens be stored hashed in the database?
+   <span class="hl-key">Answer:</span> <span class="hl-val">Yes, hash them. Same risk profile as passwords.</span>
+
+4. What does "done" look like for this spec?
+   <span class="hl-key">Answer:</span> <span class="hl-val">Register, login, refresh, logout all working.</span>
+   <span class="hl-val">Protected routes return 401 without valid token.</span>
+   <span class="hl-val">Tests passing for each endpoint.</span>
+
+<span class="hl-h2">## Key Decisions</span>
+- Middleware pattern, same as existing CORS setup
+- passwordHash on User model, no separate table
+- Refresh tokens hashed with argon2
+
+<span class="hl-h2">## New Research Needed</span>
+- argon2 hashing for refresh tokens (same lib as passwords?)</div>
+      </div>
+
+      <div class="preview-panel" id="panel-registry">
+        <div class="preview-code"><span class="hl-h1"># Spec Registry</span>
+
+| ID                   | Title              | Status      | Priority | Progress | Updated    |
+|----------------------|--------------------|-------------|----------|----------|------------|
+| user-auth-system     | User Auth System   | <span class="hl-check">active</span>      | high     | 5/7      | 2026-03-30 |
+| payment-processing   | Payment Processing | <span class="hl-marker">paused</span>      | medium   | 2/8      | 2026-03-29 |
+| notification-system  | Notifications      | <span class="hl-uncheck">completed</span>   | medium   | 12/12    | 2026-03-27 |
+
+<span class="hl-comment">One file, all your specs. Quick lookup without opening each SPEC.md.</span>
+<span class="hl-comment">SPEC.md frontmatter is authoritative &mdash; registry is a denormalized index.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="flow" id="flow">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Multi-Spec Workflow</div>
+      <h2 class="section-title">Juggle multiple specs without losing context</h2>
+      <p class="section-desc">
+        Forge a spec, pause it, start another, implement a few phases, switch back.
+        Every spec remembers exactly where you stopped.
+      </p>
+    </div>
+    <div class="flow-visual reveal">
+      <div class="flow-timeline">
+        <div class="flow-step">
+          <div class="flow-spec a">auth-system</div>
+          <div class="flow-dot"></div>
+          <div class="flow-label">Forge</div>
+          <div class="flow-sub">Research, interview,<br>write spec</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-spec a">auth-system</div>
+          <div class="flow-dot"></div>
+          <div class="flow-label">Implement</div>
+          <div class="flow-sub">Phase 1 &amp; 2<br>completed</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-spec a">auth-system</div>
+          <div class="flow-dot orange"></div>
+          <div class="flow-label">Pause</div>
+          <div class="flow-sub">Context saved,<br>resume later</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-spec b">payments</div>
+          <div class="flow-dot"></div>
+          <div class="flow-label">Forge</div>
+          <div class="flow-sub">New spec,<br>fresh research</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-spec b">payments</div>
+          <div class="flow-dot"></div>
+          <div class="flow-label">Implement</div>
+          <div class="flow-sub">Phase 1<br>completed</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-spec b">payments</div>
+          <div class="flow-dot orange"></div>
+          <div class="flow-label">Pause</div>
+          <div class="flow-sub">Switch back<br>to auth</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-spec a">auth-system</div>
+          <div class="flow-dot"></div>
+          <div class="flow-label">Resume</div>
+          <div class="flow-sub">Picks up at<br>Phase 3, AUTH-08</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-spec a">auth-system</div>
+          <div class="flow-dot" style="background:#38bdf8"></div>
+          <div class="flow-label">Complete</div>
+          <div class="flow-sub">All phases done,<br>spec archived</div>
+        </div>
       </div>
     </div>
   </div>
@@ -799,7 +1153,7 @@
             <td><span class="check">&check;</span></td>
           </tr>
           <tr>
-            <td>Opus-powered researcher subagent</td>
+            <td>Deep researcher subagent</td>
             <td><span class="check">&check;</span></td>
             <td><span class="check">&check;</span></td>
           </tr>
@@ -938,6 +1292,14 @@
       container.appendChild(p);
     }
   })();
+
+  // Preview tabs
+  function showTab(id) {
+    document.querySelectorAll('.preview-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.preview-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
 
   // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
