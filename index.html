@@ -142,22 +142,26 @@
     .burger {
       display: none;
       background: none; border: none; cursor: pointer;
-      width: 32px; height: 32px;
+      width: 44px; height: 44px;
       position: relative;
-      z-index: 110;
+      z-index: 200;
+      padding: 10px;
     }
     .burger span {
       display: block;
-      width: 20px; height: 2px;
+      width: 22px; height: 2px;
       background: var(--text);
       margin: 0 auto;
       transition: all 0.3s;
+      position: absolute;
+      left: 50%; transform: translateX(-50%);
     }
-    .burger span:nth-child(1) { transform: translateY(-5px) }
-    .burger span:nth-child(3) { transform: translateY(5px) }
-    .burger.open span:nth-child(1) { transform: rotate(45deg) }
+    .burger span:nth-child(1) { top: 14px }
+    .burger span:nth-child(2) { top: 21px }
+    .burger span:nth-child(3) { top: 28px }
+    .burger.open span:nth-child(1) { top: 21px; transform: translateX(-50%) rotate(45deg) }
     .burger.open span:nth-child(2) { opacity: 0 }
-    .burger.open span:nth-child(3) { transform: rotate(-45deg) }
+    .burger.open span:nth-child(3) { top: 21px; transform: translateX(-50%) rotate(-45deg) }
 
     /* --- HERO --- */
     .hero {
@@ -740,18 +744,18 @@
       .nav-links {
         position: fixed;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(7,8,10,0.97);
-        backdrop-filter: blur(20px);
+        background: var(--bg);
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 2rem;
+        gap: 2.5rem;
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.3s;
+        z-index: 150;
       }
       .nav-links.open { opacity: 1; pointer-events: all }
-      .nav-links a { font-size: 1.25rem }
+      .nav-links a { font-size: 1.5rem; font-weight: 450 }
       nav { padding: 1rem 1.25rem }
       section { padding: 4rem 1.25rem }
       .workflow-grid { grid-template-columns: 1fr 1fr }
