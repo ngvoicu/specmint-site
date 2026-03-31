@@ -2,7 +2,7 @@
   "name": "Specmint",
   "short_name": "Specmint",
   "description": "Persistent spec management for AI coding workflows",
-  "start_url": "/specmint-site/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#07080a",
   "theme_color": "#07080a",
