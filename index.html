@@ -693,6 +693,58 @@
     .install-cmd .comment { color: var(--text-muted) }
     .install-cmd .cmd { color: var(--mint) }
 
+    /* --- USAGE --- */
+    .usage { border-top: 1px solid var(--border) }
+    .usage-table {
+      margin-top: 4rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .usage-head, .usage-row {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr 1.3fr;
+      align-items: center;
+    }
+    .usage-head {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .usage-head > div {
+      padding: 1.25rem 1.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+    }
+    .usage-row {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .usage-head + .usage-row { border-top: none }
+    .usage-row:hover { background: var(--bg-card-hover) }
+    .usage-row > * {
+      padding: 1rem 1.5rem;
+      font-size: 0.875rem;
+    }
+    .usage-action {
+      color: var(--text);
+      font-weight: 450;
+    }
+    .usage-slash {
+      font-family: var(--mono);
+      font-size: 0.825rem;
+      color: var(--mint);
+      background: none;
+      padding: 1rem 1.5rem;
+    }
+    .usage-natural {
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
     /* --- FOOTER --- */
     footer {
       border-top: 1px solid var(--border);
@@ -792,6 +844,34 @@
       .compare-table td:nth-child(2)::before { content: 'Core: '; font-size: 0.7rem; color: var(--text-muted) }
       .compare-table td:nth-child(3)::before { content: 'TDD: '; font-size: 0.7rem; color: var(--text-muted) }
       .compare-table td:nth-child(2), .compare-table td:nth-child(3) { font-size: 0.85rem }
+
+      /* Usage table: stacked card layout */
+      .usage-head { display: none }
+      .usage-row {
+        grid-template-columns: 1fr;
+        padding: 1rem 1.25rem;
+      }
+      .usage-row > * { padding: 0.25rem 0 }
+      .usage-action {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+      .usage-slash { padding: 0.25rem 0 }
+      .usage-slash::before {
+        content: 'Claude Code: ';
+        font-family: var(--font);
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        font-style: normal;
+        margin-right: 0.25rem;
+      }
+      .usage-natural::before {
+        content: 'Any tool: ';
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        font-style: normal;
+        margin-right: 0.25rem;
+      }
     }
     @media (max-width: 480px) {
       .workflow-grid { grid-template-columns: 1fr }
@@ -818,6 +898,7 @@
     <a href="#preview" onclick="closeMenu()">Preview</a>
     <a href="#compare" onclick="closeMenu()">Compare</a>
     <a href="#install" onclick="closeMenu()">Install</a>
+    <a href="#usage" onclick="closeMenu()">Usage</a>
   </div>
 </nav>
 </header>
@@ -1350,6 +1431,66 @@ controllers in src/routes/, middleware in src/middleware/.
             <span class="cmd">npx skills add ngvoicu/specmint-tdd -g</span>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USAGE -->
+<section class="usage" id="usage">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Usage</div>
+      <h2 class="section-title">Speak the magic words</h2>
+      <p class="section-desc">
+        Use slash commands in Claude Code, or natural language in any other AI tool. Both paths trigger the same workflow.
+      </p>
+    </div>
+    <div class="usage-table reveal">
+      <div class="usage-head">
+        <div>Action</div>
+        <div>Claude Code</div>
+        <div>Any Other Tool</div>
+      </div>
+      <div class="usage-row">
+        <div class="usage-action">Start a new spec</div>
+        <code class="usage-slash">/forge user authentication</code>
+        <div class="usage-natural">&ldquo;forge a spec for user authentication&rdquo;</div>
+      </div>
+      <div class="usage-row">
+        <div class="usage-action">Execute the tasks</div>
+        <code class="usage-slash">/implement</code>
+        <div class="usage-natural">&ldquo;implement the spec&rdquo;</div>
+      </div>
+      <div class="usage-row">
+        <div class="usage-action">Resume where you left off</div>
+        <code class="usage-slash">/resume</code>
+        <div class="usage-natural">&ldquo;what was I working on&rdquo;</div>
+      </div>
+      <div class="usage-row">
+        <div class="usage-action">List all specs</div>
+        <code class="usage-slash">/list</code>
+        <div class="usage-natural">&ldquo;list my specs&rdquo;</div>
+      </div>
+      <div class="usage-row">
+        <div class="usage-action">Show progress</div>
+        <code class="usage-slash">/status</code>
+        <div class="usage-natural">&ldquo;spec status&rdquo;</div>
+      </div>
+      <div class="usage-row">
+        <div class="usage-action">Pause with context</div>
+        <code class="usage-slash">/pause</code>
+        <div class="usage-natural">&ldquo;pause the spec&rdquo;</div>
+      </div>
+      <div class="usage-row">
+        <div class="usage-action">Switch active spec</div>
+        <code class="usage-slash">/switch my-feature</code>
+        <div class="usage-natural">&ldquo;switch to my-feature&rdquo;</div>
+      </div>
+      <div class="usage-row">
+        <div class="usage-action">Generate API docs</div>
+        <code class="usage-slash">/openapi</code>
+        <div class="usage-natural">&ldquo;generate openapi&rdquo;</div>
       </div>
     </div>
   </div>
