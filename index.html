@@ -76,6 +76,10 @@
       --mint-dim: #059669;
       --mint-glow: rgba(52, 211, 153, 0.12);
       --mint-border: rgba(52, 211, 153, 0.2);
+      --kluris: #a78bfa;
+      --kluris-dim: #7c3aed;
+      --kluris-glow: rgba(167, 139, 250, 0.1);
+      --kluris-border: rgba(167, 139, 250, 0.22);
       --bg: #07080a;
       --bg-card: #0d0f13;
       --bg-card-hover: #111318;
@@ -748,6 +752,189 @@
       font-style: italic;
     }
 
+    /* --- KLURIS --- */
+    .kluris { border-top: 1px solid var(--border) }
+    .kluris-lockup {
+      display: flex; align-items: center; justify-content: center;
+      gap: 1.25rem;
+      margin: 0 0 2rem;
+    }
+    .kluris-lockup img {
+      width: 46px; height: 46px;
+      border-radius: 10px;
+      display: block;
+    }
+    .crossover-mark {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-style: italic;
+      line-height: 1;
+      background: linear-gradient(90deg, var(--mint) 0%, var(--kluris) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      opacity: 0.9;
+    }
+    .kluris .section-title em {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--kluris);
+      font-weight: 400;
+    }
+    .kluris .section-label,
+    .kluris .section-title,
+    .kluris .section-desc {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .kluris .section-desc { max-width: 780px }
+    .kluris-inline-link {
+      color: var(--kluris);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--kluris-border);
+    }
+    .kluris-inline-link:hover {
+      border-bottom-color: var(--kluris);
+    }
+    .kluris-emph {
+      color: var(--text);
+      font-style: italic;
+    }
+    .kluris-benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 4rem;
+    }
+    .kluris-benefit {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem 1.75rem;
+      background: var(--bg-card);
+      transition: all 0.25s;
+    }
+    .kluris-benefit:hover {
+      border-color: var(--kluris-border);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+    .benefit-icon {
+      width: 38px; height: 38px;
+      border-radius: 9px;
+      background: var(--kluris-glow);
+      color: var(--kluris);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.3rem;
+      margin-bottom: 1.25rem;
+    }
+    .kluris-benefit h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .kluris-benefit p {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+    .kluris-terminal {
+      margin-top: 3rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--bg-card);
+    }
+    .kluris-terminal-head {
+      padding: 0.75rem 1.25rem;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .kluris-terminal-dots {
+      display: inline-flex; gap: 0.375rem;
+    }
+    .kluris-terminal-dots span {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--text-muted); opacity: 0.4;
+    }
+    .kluris-terminal-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-left: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+    .kluris-terminal-body {
+      padding: 1.75rem;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      line-height: 1.95;
+      color: var(--text-dim);
+      white-space: pre;
+      overflow-x: auto;
+      margin: 0;
+    }
+    .kt-prompt-mint { color: var(--mint); font-weight: 600 }
+    .kt-prompt-purple { color: var(--kluris); font-weight: 600 }
+    .kt-hit { color: var(--text) }
+    .kt-dim { color: var(--text-muted) }
+    .kt-quote { color: var(--kluris); font-style: italic }
+    .kluris-cta {
+      margin-top: 2.5rem;
+      padding: 2rem 2.25rem;
+      border: 1px solid var(--kluris-border);
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--kluris-glow) 0%, transparent 70%), var(--bg-card);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 2rem; flex-wrap: wrap;
+    }
+    .kluris-cta-copy {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      flex: 1; min-width: 260px;
+      line-height: 1.65;
+    }
+    .kluris-cta-copy strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+    .kluris-cta-actions {
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .kluris-install-cmd {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      padding: 0.625rem 1rem;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--kluris);
+    }
+    .btn-kluris {
+      background: var(--kluris);
+      color: #07080a;
+    }
+    .btn-kluris:hover {
+      background: #bba1fc;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px rgba(167,139,250,0.25);
+    }
+    @media (max-width: 900px) {
+      .kluris-benefits { grid-template-columns: 1fr }
+    }
+    @media (max-width: 640px) {
+      .kluris-cta { padding: 1.5rem }
+      .kluris-cta-actions { width: 100%; justify-content: space-between }
+      .kluris-terminal-body { font-size: 0.72rem; padding: 1.25rem }
+      .kluris-lockup img { width: 38px; height: 38px }
+      .crossover-mark { font-size: 1.5rem }
+    }
+
     /* --- FOOTER --- */
     footer {
       border-top: 1px solid var(--border);
@@ -902,6 +1089,7 @@
     <a href="#compare" onclick="closeMenu()">Compare</a>
     <a href="#install" onclick="closeMenu()">Install</a>
     <a href="#usage" onclick="closeMenu()">Usage</a>
+    <a href="#kluris" onclick="closeMenu()">Kluris</a>
   </div>
 </nav>
 </header>
@@ -1494,6 +1682,74 @@ controllers in src/routes/, middleware in src/middleware/.
         <div class="usage-action">Generate API docs</div>
         <code class="usage-slash">/openapi</code>
         <div class="usage-natural">&ldquo;generate openapi&rdquo;</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KLURIS -->
+<section class="kluris" id="kluris">
+  <div class="container">
+    <div class="reveal">
+      <div class="kluris-lockup" aria-hidden="true">
+        <img src="logo.webp" alt="" width="46" height="46">
+        <span class="crossover-mark">&times;</span>
+        <img src="kluris-logo.webp" alt="" width="46" height="46">
+      </div>
+      <div class="section-label">Pair with Kluris</div>
+      <h2 class="section-title">The knowledge your repo <em>can&rsquo;t</em> tell you.</h2>
+      <p class="section-desc">
+        Specmint reads your codebase. <a href="https://kluris.io" class="kluris-inline-link">Kluris</a> gives your agents the <em class="kluris-emph">other</em> half &mdash; tribal knowledge that never made it into comments. Decisions, constraints, past incidents, who owns what. Curated. Versioned. Queryable.
+      </p>
+    </div>
+
+    <div class="kluris-benefits reveal">
+      <div class="kluris-benefit">
+        <div class="benefit-icon">R</div>
+        <h3>Grounded research</h3>
+        <p>Phase 1a reads the repo. Phase 1b queries the brain. Specs land with decisions, not guesses.</p>
+      </div>
+      <div class="kluris-benefit">
+        <div class="benefit-icon">M</div>
+        <h3>Institutional memory</h3>
+        <p>Architecture calls, migration scars, stakeholder context. Survives team turnover and agent resets.</p>
+      </div>
+      <div class="kluris-benefit">
+        <div class="benefit-icon">S</div>
+        <h3>Spec reuse</h3>
+        <p>Harvest reusable patterns from shipped specs back into the brain. The next feature starts smarter.</p>
+      </div>
+    </div>
+
+    <div class="kluris-terminal reveal" role="group" aria-label="Specmint and Kluris working together">
+      <div class="kluris-terminal-head">
+        <span class="kluris-terminal-dots"><span></span><span></span><span></span></span>
+        <span class="kluris-terminal-label">phase 1b &middot; research</span>
+      </div>
+<pre class="kluris-terminal-body"><span class="kt-prompt-mint">&gt;</span> /specmint-core:forge add OAuth sign-in with GitHub
+
+<span class="kt-dim">research · phase 1a · reading codebase ........ done</span>
+<span class="kt-dim">research · phase 1b · querying brain ..........</span>
+
+  <span class="kt-prompt-purple">&gt;</span> /kluris-&lt;brain&gt; what do we know about auth and session handling?
+
+  <span class="kt-hit">• sessions live in httpOnly cookies, 12h TTL (decided 2025-09 · ADR-014)</span>
+  <span class="kt-hit">• Redis backs session store in prod, in-memory in test</span>
+  <span class="kt-hit">• last OAuth migration leaked tokens via server logs · fix: redact before write</span>
+
+<span class="kt-dim">research · phase 1c · synthesis ............... done</span>
+
+<span class="kt-prompt-mint">&gt;</span> spec written to <span class="kt-quote">.specs/oauth-github.md</span> &mdash; ready for interview.
+</pre>
+    </div>
+
+    <div class="kluris-cta reveal">
+      <div class="kluris-cta-copy">
+        <strong>One brain. Every agent.</strong> &nbsp;Kluris turns a git repo into a shared knowledge graph &mdash; readable by Specmint, Claude Code, Codex, Cursor, Windsurf, and the rest of your toolchain.
+      </div>
+      <div class="kluris-cta-actions">
+        <code class="kluris-install-cmd">pipx install kluris</code>
+        <a href="https://kluris.io" class="btn btn-kluris" target="_blank" rel="noopener">Explore Kluris &rarr;</a>
       </div>
     </div>
   </div>
