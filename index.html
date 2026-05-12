@@ -1159,20 +1159,38 @@
 
       /* Compare table: hide header, card layout */
       .compare-table thead { display: none }
-      .compare-table, .compare-table tbody, .compare-table tr, .compare-table td {
-        display: block; width: 100%;
-      }
+      .compare-table, .compare-table tbody { display: block; width: 100% }
       .compare-table tr {
-        padding: 0.875rem 1rem;
+        display: block;
+        padding: 0.625rem 0.875rem;
         border-bottom: 1px solid var(--border);
-        display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;
       }
       .compare-table tr:last-child { border-bottom: none }
-      .compare-table td { padding: 0; border: none }
-      .compare-table td:first-child { width: 100%; margin-bottom: 0.25rem }
-      .compare-table td:nth-child(2)::before { content: 'Core: '; font-size: 0.7rem; color: var(--text-muted) }
-      .compare-table td:nth-child(3)::before { content: 'TDD: '; font-size: 0.7rem; color: var(--text-muted) }
-      .compare-table td:nth-child(2), .compare-table td:nth-child(3) { font-size: 0.85rem }
+      .compare-table td {
+        display: inline-block;
+        padding: 0;
+        border: none;
+        vertical-align: middle;
+      }
+      .compare-table td:first-child {
+        display: block;
+        width: 100%;
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
+        color: var(--text);
+      }
+      .compare-table td:nth-child(2),
+      .compare-table td:nth-child(3) {
+        font-size: 0.72rem;
+        color: var(--text-muted);
+      }
+      .compare-table td:nth-child(2)::before { content: 'Core '; }
+      .compare-table td:nth-child(3)::before { content: 'TDD '; }
+      .compare-table td:nth-child(2) { margin-right: 1rem; }
+      .compare-table td .check, .compare-table td .dash {
+        font-size: 0.85rem;
+        margin-left: 0.125rem;
+      }
 
       /* Usage table: stacked card layout */
       .usage-head { display: none }
