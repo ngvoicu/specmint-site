@@ -6,8 +6,8 @@
 
   <!-- Primary Meta -->
   <title>Specmint — Persistent Spec Management for AI Coding Workflows</title>
-  <meta name="description" content="Turn ephemeral AI coding plans into persistent, resumable specs. Deep research, iterative interviews, phased implementation with progress tracking. Claude Code plugin and universal skill for Codex, Cursor, Windsurf, Cline, Gemini CLI, Devin, Antigravity, and more.">
-  <meta name="keywords" content="specmint, spec management, AI coding, Claude Code plugin, AI coding workflow, persistent specs, test-driven development, TDD, AI planning, code specification, Codex, Cursor, Windsurf, Cline, Gemini CLI, Devin, Antigravity, AI pair programming, AI development tools, spec-driven development">
+  <meta name="description" content="Turn ephemeral AI coding plans into persistent, resumable specs. Deep research, iterative interviews, phased implementation with progress tracking. Four variants — markdown or rich HTML output, with or without strict TDD. Claude Code plugin and universal skill for Codex, Cursor, Windsurf, Cline, Gemini CLI, Devin, Antigravity, and more.">
+  <meta name="keywords" content="specmint, spec management, AI coding, Claude Code plugin, AI coding workflow, persistent specs, test-driven development, TDD, AI planning, code specification, HTML specs, Mermaid diagrams, Codex, Cursor, Windsurf, Cline, Gemini CLI, Devin, Antigravity, AI pair programming, AI development tools, spec-driven development">
   <meta name="author" content="Gabriel Voicu">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://specmint.io/">
@@ -50,7 +50,9 @@
     "downloadUrl": "https://github.com/ngvoicu/specmint-core",
     "sameAs": [
       "https://github.com/ngvoicu/specmint-core",
-      "https://github.com/ngvoicu/specmint-tdd"
+      "https://github.com/ngvoicu/specmint-core-html",
+      "https://github.com/ngvoicu/specmint-tdd",
+      "https://github.com/ngvoicu/specmint-tdd-html"
     ]
   }
   </script>
@@ -355,6 +357,31 @@
 
     /* --- PLUGINS --- */
     .plugins { border-top: 1px solid var(--border) }
+    .variant-axes {
+      display: inline-flex;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .variant-axis {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      background: var(--bg-card);
+      font-size: 0.85rem;
+    }
+    .variant-axis__label {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .variant-axis__rows { color: var(--text-dim); }
     .plugins-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -362,16 +389,53 @@
       margin-top: 4rem;
       align-items: stretch;
     }
+    .plugins-grid--four { gap: 1.25rem; }
     .plugin-card {
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 2.5rem;
+      padding: 2.25rem 2rem;
       background: var(--bg-card);
       transition: all 0.3s;
       position: relative;
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+    }
+    .plugin-card__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+    .plugin-tag {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+    }
+    .plugin-tag--md {
+      color: var(--text-dim);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+    }
+    .plugin-tag--html {
+      color: var(--mint);
+      background: var(--mint-glow);
+      border: 1px solid var(--mint-border);
+    }
+    .plugin-card--html::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--mint), transparent);
+      opacity: 0.4;
     }
     .plugin-card:hover {
       border-color: var(--border-hover);
@@ -476,6 +540,78 @@
       text-transform: uppercase;
       margin-left: 0.5rem;
       vertical-align: middle;
+    }
+    .tdd-badge--inline { margin-left: 0; }
+
+    /* --- GALLERY --- */
+    .gallery { border-top: 1px solid var(--border); padding: 6rem 2rem; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+    .gallery-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--bg-card);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.3s, border-color 0.3s, background 0.3s;
+    }
+    .gallery-card:hover {
+      border-color: var(--mint-border);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+    .gallery-card__caption {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .gallery-card__name {
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      color: var(--mint);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .gallery-card__sub {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+    .gallery-card__frame {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #f5f6f8 0%, #ffffff 100%);
+    }
+    .gallery-card__frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      transition: transform 0.6s ease;
+    }
+    .gallery-card:hover .gallery-card__frame img { transform: translateY(-1.5%); }
+    .gallery-card__frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(13,15,19,0) 60%, rgba(13,15,19,0.5) 100%);
+    }
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-card__frame { height: 320px; }
     }
 
     /* --- PREVIEW --- */
@@ -1085,7 +1221,7 @@
   <div class="nav-links">
     <a href="#workflow" onclick="closeMenu()">Workflow</a>
     <a href="#plugins" onclick="closeMenu()">Plugins</a>
-    <a href="#preview" onclick="closeMenu()">Preview</a>
+    <a href="#gallery" onclick="closeMenu()">Gallery</a>
     <a href="#compare" onclick="closeMenu()">Compare</a>
     <a href="#install" onclick="closeMenu()">Install</a>
     <a href="#usage" onclick="closeMenu()">Usage</a>
@@ -1171,50 +1307,120 @@
   <div class="container">
     <div class="reveal">
       <div class="section-label">Plugins</div>
-      <h2 class="section-title">Two flavors, one philosophy</h2>
+      <h2 class="section-title">Four variants, one workflow</h2>
       <p class="section-desc">
-        Choose standard spec management or enforce strict test-driven development. Both share the same research-first foundation.
+        Pick your output format and your methodology. Markdown for friction-free git workflows, or rich HTML with Mermaid diagrams, syntax-highlighted code diffs, and clickable mockup library. With or without strict test-driven development.
       </p>
+      <div class="variant-axes">
+        <div class="variant-axis"><span class="variant-axis__label">Methodology</span><span class="variant-axis__rows">Core &middot; <span class="tdd-badge tdd-badge--inline">TDD</span></span></div>
+        <div class="variant-axis"><span class="variant-axis__label">Format</span><span class="variant-axis__rows">Markdown &middot; HTML</span></div>
+      </div>
     </div>
-    <div class="plugins-grid reveal">
+    <div class="plugins-grid plugins-grid--four reveal">
 
       <!-- CORE -->
-      <div class="plugin-card">
-        <div class="plugin-name">specmint-core</div>
-        <h3 class="plugin-title">Standard Spec Management</h3>
+      <a class="plugin-card" href="https://github.com/ngvoicu/specmint-core" target="_blank" rel="noopener">
+        <div class="plugin-card__head">
+          <div class="plugin-name">specmint-core</div>
+          <span class="plugin-tag plugin-tag--md">Markdown</span>
+        </div>
+        <h3 class="plugin-title">Standard &middot; Markdown</h3>
         <p class="plugin-desc">
-          The complete spec workflow: research, interview, forge, implement, resume.
-          Persistent specs with phases, tasks, and a registry that tracks everything.
+          The research-first workflow producing <code>SPEC.md</code> files. Plain markdown, git-friendly diffs, opens anywhere.
         </p>
         <ul class="plugin-features">
-          <li>Deep researcher subagent for exhaustive codebase and web analysis</li>
-          <li>Architecture diagrams, library comparison tables, testing strategy</li>
-          <li>Self-review checklist: placeholder, consistency, scope, and ambiguity checks</li>
-          <li>Phase-level review and verification gates before completion</li>
-          <li>Live progress tracking with task checkboxes</li>
-          <li>Resume context: pick up exactly where you left off, across sessions and tools</li>
-          <li>8 commands: forge, implement, resume, pause, switch, list, status, openapi</li>
+          <li>Deep researcher subagent, library comparisons, architecture notes</li>
+          <li>Phase/task tracking, resume context, multi-spec switching</li>
+          <li>8 slash commands plus universal skill for non-Claude tools</li>
         </ul>
-      </div>
+      </a>
+
+      <!-- CORE-HTML -->
+      <a class="plugin-card plugin-card--html" href="https://github.com/ngvoicu/specmint-core-html" target="_blank" rel="noopener">
+        <div class="plugin-card__head">
+          <div class="plugin-name">specmint-core-html</div>
+          <span class="plugin-tag plugin-tag--html">HTML</span>
+        </div>
+        <h3 class="plugin-title">Standard &middot; Rich HTML</h3>
+        <p class="plugin-desc">
+          Same workflow, <code>SPEC.html</code> output. Mermaid diagrams, PrismJS code diffs, wireframe and hi-fi UI mockups, click-to-zoom.
+        </p>
+        <ul class="plugin-features">
+          <li>Mermaid flowchart, sequence, ER, state, journey, treemap</li>
+          <li>PrismJS diff-highlight: red/green lines with syntax color</li>
+          <li>Bespoke <code>.wf-*</code> / <code>.ui-*</code> mockup primitives</li>
+          <li>Derived progress &mdash; one <code>data-status</code> swap propagates</li>
+        </ul>
+      </a>
 
       <!-- TDD -->
-      <div class="plugin-card">
-        <div class="plugin-name">specmint-tdd <span class="tdd-badge">TDD</span></div>
-        <h3 class="plugin-title">Test-Driven Specs</h3>
+      <a class="plugin-card" href="https://github.com/ngvoicu/specmint-tdd" target="_blank" rel="noopener">
+        <div class="plugin-card__head">
+          <div class="plugin-name">specmint-tdd <span class="tdd-badge">TDD</span></div>
+          <span class="plugin-tag plugin-tag--md">Markdown</span>
+        </div>
+        <h3 class="plugin-title">Test-Driven &middot; Markdown</h3>
         <p class="plugin-desc">
-          Everything in Core, plus strict red-green-refactor enforcement.
-          Every task starts with a failing test. No production code without red tests.
+          Core workflow plus strict red-green-refactor enforcement. Every task starts with a failing test.
         </p>
         <ul class="plugin-features">
-          <li>Alternating TEST-IMPL task pairs within each feature phase</li>
-          <li>Mandatory test execution at every RED, GREEN, and REFACTOR transition</li>
-          <li>TDD Log audit trail tracking red/green/refactor output per task</li>
-          <li>Testing Architecture section: frameworks, isolation, coverage targets</li>
-          <li>Testcontainers for real services, mock only at boundaries</li>
-          <li>Tests Are Sacred: never modify assertions to match code</li>
+          <li>Alternating TEST-IMPL task pairs per phase</li>
+          <li>Mandatory test runs at RED, GREEN, REFACTOR transitions</li>
+          <li>TDD Log audit trail; Testing Architecture in every spec</li>
           <li>Language-agnostic testing reference for 6+ languages</li>
         </ul>
-      </div>
+      </a>
+
+      <!-- TDD-HTML -->
+      <a class="plugin-card plugin-card--html" href="https://github.com/ngvoicu/specmint-tdd-html" target="_blank" rel="noopener">
+        <div class="plugin-card__head">
+          <div class="plugin-name">specmint-tdd-html <span class="tdd-badge">TDD</span></div>
+          <span class="plugin-tag plugin-tag--html">HTML</span>
+        </div>
+        <h3 class="plugin-title">Test-Driven &middot; Rich HTML</h3>
+        <p class="plugin-desc">
+          TDD discipline rendered as a 3-lane RGR swimlane log, paired TEST-IMPL task cards, click-to-zoom diagrams.
+        </p>
+        <ul class="plugin-features">
+          <li>RED / GREEN / REFACTOR swimlane TDD log per cycle</li>
+          <li>Paired TEST-IMPL task cards with <code>satisfies</code> cross-refs</li>
+          <li>Current TDD phase derived live from the in-progress IMPL task</li>
+          <li>Same HTML rendering stack as <code>specmint-core-html</code></li>
+        </ul>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY: see-it-rendered -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">See it rendered</div>
+      <h2 class="section-title">Specs that look like specs, not READMEs</h2>
+      <p class="section-desc">
+        The <code>-html</code> variants emit a single <code>SPEC.html</code> file with the design system baked in. Click a preview to open it full size.
+      </p>
+    </div>
+    <div class="gallery-grid reveal">
+      <a class="gallery-card" href="preview-core-html.png" target="_blank" rel="noopener">
+        <div class="gallery-card__caption">
+          <span class="gallery-card__name">specmint-core-html <span class="plugin-tag plugin-tag--html">HTML</span></span>
+          <span class="gallery-card__sub">Team Invites &middot; full feature spec with diagrams, mockups, code diff</span>
+        </div>
+        <div class="gallery-card__frame">
+          <img src="preview-core-html.png" alt="specmint-core-html rendered SPEC.html — Team Invites spec showing Mermaid diagram, library choices table, phases, code diff, hi-fi UI mockup" loading="lazy">
+        </div>
+      </a>
+      <a class="gallery-card" href="preview-tdd-html.png" target="_blank" rel="noopener">
+        <div class="gallery-card__caption">
+          <span class="gallery-card__name">specmint-tdd-html <span class="tdd-badge">TDD</span> <span class="plugin-tag plugin-tag--html">HTML</span></span>
+          <span class="gallery-card__sub">Rate Limit Middleware &middot; paired TEST-IMPL tasks, RGR swimlane log</span>
+        </div>
+        <div class="gallery-card__frame">
+          <img src="preview-tdd-html.png" alt="specmint-tdd-html rendered SPEC.html — Rate Limit Middleware spec showing Testing Architecture, paired TEST-IMPL task cards, RGR swimlane TDD log" loading="lazy">
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -1505,7 +1711,7 @@ controllers in src/routes/, middleware in src/middleware/.
       <div class="section-label">Compare</div>
       <h2 class="section-title">Core vs TDD at a glance</h2>
       <p class="section-desc">
-        TDD builds on Core. Everything in Core is also in TDD &mdash; the TDD column shows what it adds.
+        TDD builds on Core. Everything in Core is also in TDD &mdash; the TDD column shows what it adds. <strong>The <code>-html</code> suffix is orthogonal:</strong> same workflow, the only thing it changes is the output format from markdown to rich HTML.
       </p>
     </div>
     <div class="compare-table-wrap reveal">
@@ -1604,12 +1810,16 @@ controllers in src/routes/, middleware in src/middleware/.
         <div class="install-card-header">Claude Code</div>
         <div class="install-card-body">
           <div class="install-cmd">
-            <span class="comment"># specmint-core</span><br>
+            <span class="comment"># Markdown specs</span><br>
             <span class="cmd">/plugin marketplace add ngvoicu/specmint-core</span><br>
-            <span class="cmd">/plugin install specmint-core</span><br><br>
-            <span class="comment"># specmint-tdd</span><br>
+            <span class="cmd">/plugin install specmint-core</span><br>
             <span class="cmd">/plugin marketplace add ngvoicu/specmint-tdd</span><br>
-            <span class="cmd">/plugin install specmint-tdd</span>
+            <span class="cmd">/plugin install specmint-tdd</span><br><br>
+            <span class="comment"># Rich HTML specs (Mermaid + code diffs + mockups)</span><br>
+            <span class="cmd">/plugin marketplace add ngvoicu/specmint-core-html</span><br>
+            <span class="cmd">/plugin install specmint-core-html</span><br>
+            <span class="cmd">/plugin marketplace add ngvoicu/specmint-tdd-html</span><br>
+            <span class="cmd">/plugin install specmint-tdd-html</span>
           </div>
         </div>
       </div>
@@ -1619,7 +1829,9 @@ controllers in src/routes/, middleware in src/middleware/.
           <div class="install-cmd">
             <span class="comment"># Codex, Cursor, Windsurf, Cline, Gemini CLI, Devin, Antigravity, and others</span><br>
             <span class="cmd">npx skills add ngvoicu/specmint-core -g</span><br>
-            <span class="cmd">npx skills add ngvoicu/specmint-tdd -g</span>
+            <span class="cmd">npx skills add ngvoicu/specmint-tdd -g</span><br>
+            <span class="cmd">npx skills add ngvoicu/specmint-core-html -g</span><br>
+            <span class="cmd">npx skills add ngvoicu/specmint-tdd-html -g</span>
           </div>
         </div>
       </div>
@@ -1766,7 +1978,9 @@ controllers in src/routes/, middleware in src/middleware/.
   </div>
   <div class="footer-links">
     <a href="https://github.com/ngvoicu/specmint-core" target="_blank" rel="noopener"><svg class="footer-gh" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> specmint-core</a>
+    <a href="https://github.com/ngvoicu/specmint-core-html" target="_blank" rel="noopener"><svg class="footer-gh" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> specmint-core-html</a>
     <a href="https://github.com/ngvoicu/specmint-tdd" target="_blank" rel="noopener"><svg class="footer-gh" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> specmint-tdd</a>
+    <a href="https://github.com/ngvoicu/specmint-tdd-html" target="_blank" rel="noopener"><svg class="footer-gh" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> specmint-tdd-html</a>
     <a href="https://github.com/ngvoicu" target="_blank" rel="noopener"><svg class="footer-gh" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> ngvoicu</a>
     <a href="https://www.linkedin.com/in/ngvoicu/" target="_blank" rel="noopener"><svg class="footer-gh" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> Gabriel Voicu</a>
   </div>
