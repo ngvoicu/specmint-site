@@ -975,8 +975,6 @@
       margin: 0;
     }
     .kt-prompt-mint { color: var(--mint); font-weight: 600 }
-    .kt-prompt-purple { color: var(--kluris); font-weight: 600 }
-    .kt-hit { color: var(--text) }
     .kt-dim { color: var(--text-muted) }
     .kt-quote { color: var(--kluris); font-style: italic }
     .kluris-cta {
@@ -1891,17 +1889,11 @@ controllers in src/routes/, middleware in src/middleware/.
         <span class="kluris-terminal-dots"><span></span><span></span><span></span></span>
         <span class="kluris-terminal-label">phase 1b &middot; research</span>
       </div>
-<pre class="kluris-terminal-body"><span class="kt-prompt-mint">&gt;</span> forge add OAuth sign-in with GitHub
+<pre class="kluris-terminal-body"><span class="kt-prompt-mint">&gt;</span> write a spec for OAuth sign-in with GitHub &mdash;
+  check the brain, the codebase, and the web
 
 <span class="kt-dim">research · phase 1a · reading codebase ........ done</span>
-<span class="kt-dim">research · phase 1b · querying brain ..........</span>
-
-  <span class="kt-prompt-purple">&gt;</span> /kluris-&lt;brain&gt; what do we know about auth and session handling?
-
-  <span class="kt-hit">• sessions live in httpOnly cookies, 12h TTL (decided 2025-09 · ADR-014)</span>
-  <span class="kt-hit">• Redis backs session store in prod, in-memory in test</span>
-  <span class="kt-hit">• last OAuth migration leaked tokens via server logs · fix: redact before write</span>
-
+<span class="kt-dim">research · phase 1b · kluris wake-up ........... done</span>
 <span class="kt-dim">research · phase 1c · synthesis ............... done</span>
 
 <span class="kt-prompt-mint">&gt;</span> spec written to <span class="kt-quote">.specs/oauth-github.md</span> &mdash; ready for interview.
