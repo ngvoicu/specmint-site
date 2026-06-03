@@ -6,8 +6,8 @@
 
   <!-- Primary Meta -->
   <title>Specmint — Persistent Spec Management for AI Coding Workflows</title>
-  <meta name="description" content="Turn ephemeral AI coding plans into persistent, resumable specs. Deep research, iterative interviews, phased implementation with progress tracking. Four variants — markdown or rich HTML output, with or without strict TDD. Claude Code plugin and universal skill for Codex, Cursor, Windsurf, Cline, Gemini CLI, Devin, Antigravity, and more.">
-  <meta name="keywords" content="specmint, spec management, AI coding, Claude Code plugin, AI coding workflow, persistent specs, test-driven development, TDD, AI planning, code specification, HTML specs, Mermaid diagrams, Codex, Cursor, Windsurf, Cline, Gemini CLI, Devin, Antigravity, AI pair programming, AI development tools, spec-driven development">
+  <meta name="description" content="Turn ephemeral AI coding plans into persistent, resumable specs. Deep research, iterative interviews, phased implementation with progress tracking. Four variants — markdown or rich HTML output, with or without strict TDD. A universal skill for Claude Code, Codex, Cursor, Windsurf, Cline, Gemini CLI, Devin, Antigravity, and more.">
+  <meta name="keywords" content="specmint, spec management, AI coding, Claude Code skill, AI agent skill, AI coding workflow, persistent specs, test-driven development, TDD, AI planning, code specification, HTML specs, Mermaid diagrams, Codex, Cursor, Windsurf, Cline, Gemini CLI, Devin, Antigravity, AI pair programming, AI development tools, spec-driven development">
   <meta name="author" content="Gabriel Voicu">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://specmint.io/">
@@ -493,41 +493,6 @@
       margin-top: 0.5rem;
       flex-shrink: 0;
     }
-    .plugin-install {
-      background: rgba(0,0,0,0.4);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 0.875rem 1.125rem;
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      display: flex; align-items: center; justify-content: space-between;
-      cursor: pointer;
-      transition: all 0.2s;
-      position: relative;
-    }
-    .plugin-install:hover {
-      border-color: var(--mint-border);
-      color: var(--text);
-    }
-    .plugin-install .copy-icon {
-      width: 14px; height: 14px;
-      opacity: 0.4;
-      transition: opacity 0.2s;
-      flex-shrink: 0;
-    }
-    .plugin-install:hover .copy-icon { opacity: 0.8 }
-    .plugin-install .copied-msg {
-      position: absolute;
-      right: 1rem;
-      font-family: var(--sans);
-      font-size: 0.75rem;
-      color: var(--mint);
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-    .plugin-install.copied .copied-msg { opacity: 1 }
-    .plugin-install.copied .copy-icon { opacity: 0 }
     .tdd-badge {
       display: inline-flex; align-items: center; gap: 0.375rem;
       padding: 0.25rem 0.625rem;
@@ -847,7 +812,7 @@
     }
     .usage-head, .usage-row {
       display: grid;
-      grid-template-columns: 1fr 1.3fr 1.3fr;
+      grid-template-columns: 1fr 2fr;
       align-items: center;
     }
     .usage-head {
@@ -876,13 +841,6 @@
     .usage-action {
       color: var(--text);
       font-weight: 450;
-    }
-    .usage-slash {
-      font-family: var(--mono);
-      font-size: 0.825rem;
-      color: var(--mint);
-      background: none;
-      padding: 1rem 1.5rem;
     }
     .usage-natural {
       color: var(--text-muted);
@@ -1203,22 +1161,6 @@
         font-weight: 600;
         margin-bottom: 0.25rem;
       }
-      .usage-slash { padding: 0.25rem 0 }
-      .usage-slash::before {
-        content: 'Claude Code: ';
-        font-family: var(--font);
-        font-size: 0.7rem;
-        color: var(--text-muted);
-        font-style: normal;
-        margin-right: 0.25rem;
-      }
-      .usage-natural::before {
-        content: 'Any tool: ';
-        font-size: 0.7rem;
-        color: var(--text-muted);
-        font-style: normal;
-        margin-right: 0.25rem;
-      }
     }
     @media (max-width: 480px) {
       .workflow-grid { grid-template-columns: 1fr }
@@ -1248,7 +1190,7 @@
   </button>
   <div class="nav-links">
     <a href="#workflow" onclick="closeMenu()">Workflow</a>
-    <a href="#plugins" onclick="closeMenu()">Plugins</a>
+    <a href="#skills" onclick="closeMenu()">Skills</a>
     <a href="#gallery" onclick="closeMenu()">Gallery</a>
     <a href="#compare" onclick="closeMenu()">Compare</a>
     <a href="#install" onclick="closeMenu()">Install</a>
@@ -1270,7 +1212,7 @@
   </p>
   <div class="hero-actions">
     <a href="#install" class="btn btn-primary">Get started</a>
-    <a href="#plugins" onclick="closeMenu()" class="btn btn-ghost">Explore plugins</a>
+    <a href="#skills" onclick="closeMenu()" class="btn btn-ghost">Explore skills</a>
   </div>
   <div class="hero-tools">
     <span>Works with</span>
@@ -1331,10 +1273,10 @@
 </section>
 
 <!-- PLUGINS -->
-<section class="plugins" id="plugins">
+<section class="plugins" id="skills">
   <div class="container">
     <div class="reveal">
-      <div class="section-label">Plugins</div>
+      <div class="section-label">Skills</div>
       <h2 class="section-title">Four variants, one workflow</h2>
       <p class="section-desc">
         Pick your output format and your methodology. Markdown for friction-free git workflows, or rich HTML with Mermaid diagrams, syntax-highlighted code diffs, and clickable mockup library. With or without strict test-driven development.
@@ -1359,7 +1301,7 @@
         <ul class="plugin-features">
           <li>Deep researcher subagent, library comparisons, architecture notes</li>
           <li>Phase/task tracking, resume context, multi-spec switching</li>
-          <li>8 slash commands plus universal skill for non-Claude tools</li>
+          <li>Universal skill — natural-language triggers, works in every AI tool</li>
         </ul>
       </a>
 
@@ -1830,34 +1772,26 @@ controllers in src/routes/, middleware in src/middleware/.
       <div class="section-label">Install</div>
       <h2 class="section-title">Up and running in one command</h2>
       <p class="section-desc">
-        Install as a Claude Code plugin or as a universal skill for any AI coding tool.
+        Install as a universal skill — one command, any AI coding tool.
       </p>
     </div>
     <div class="install-grid reveal">
       <div class="install-card">
-        <div class="install-card-header">Claude Code</div>
+        <div class="install-card-header">Markdown specs</div>
         <div class="install-card-body">
           <div class="install-cmd">
-            <span class="comment"># Markdown specs</span><br>
-            <span class="cmd">/plugin marketplace add ngvoicu/specmint-core</span><br>
-            <span class="cmd">/plugin install specmint-core</span><br>
-            <span class="cmd">/plugin marketplace add ngvoicu/specmint-tdd</span><br>
-            <span class="cmd">/plugin install specmint-tdd</span><br><br>
-            <span class="comment"># Rich HTML specs (Mermaid + code diffs + mockups)</span><br>
-            <span class="cmd">/plugin marketplace add ngvoicu/specmint-core-html</span><br>
-            <span class="cmd">/plugin install specmint-core-html</span><br>
-            <span class="cmd">/plugin marketplace add ngvoicu/specmint-tdd-html</span><br>
-            <span class="cmd">/plugin install specmint-tdd-html</span>
+            <span class="comment"># Standard + TDD · Claude Code, Codex, Cursor &amp; more</span><br>
+            <span class="cmd">npx skills add ngvoicu/specmint-core -g</span><br>
+            <span class="cmd">npx skills add ngvoicu/specmint-tdd -g</span><br><br>
+            <span class="comment"># add -a &lt;tool&gt; to target one tool</span>
           </div>
         </div>
       </div>
       <div class="install-card">
-        <div class="install-card-header">Universal Skill (any tool)</div>
+        <div class="install-card-header">Rich HTML specs</div>
         <div class="install-card-body">
           <div class="install-cmd">
-            <span class="comment"># Codex, Cursor, Windsurf, Cline, Gemini CLI, Devin, Antigravity, and others</span><br>
-            <span class="cmd">npx skills add ngvoicu/specmint-core -g</span><br>
-            <span class="cmd">npx skills add ngvoicu/specmint-tdd -g</span><br>
+            <span class="comment"># Mermaid diagrams + code diffs + mockups</span><br>
             <span class="cmd">npx skills add ngvoicu/specmint-core-html -g</span><br>
             <span class="cmd">npx skills add ngvoicu/specmint-tdd-html -g</span>
           </div>
@@ -1874,53 +1808,44 @@ controllers in src/routes/, middleware in src/middleware/.
       <div class="section-label">Usage</div>
       <h2 class="section-title">Speak the magic words</h2>
       <p class="section-desc">
-        Use slash commands in Claude Code, or natural language in any other AI tool. Both paths trigger the same workflow.
+        Talk to your AI tool in plain language. The skill recognizes the spec lifecycle and triggers the right workflow.
       </p>
     </div>
     <div class="usage-table reveal">
       <div class="usage-head">
         <div>Action</div>
-        <div>Claude Code</div>
-        <div>Any Other Tool</div>
+        <div>Say this</div>
       </div>
       <div class="usage-row">
         <div class="usage-action">Start a new spec</div>
-        <code class="usage-slash">/forge user authentication</code>
         <div class="usage-natural">&ldquo;forge a spec for user authentication&rdquo;</div>
       </div>
       <div class="usage-row">
         <div class="usage-action">Execute the tasks</div>
-        <code class="usage-slash">/implement</code>
         <div class="usage-natural">&ldquo;implement the spec&rdquo;</div>
       </div>
       <div class="usage-row">
         <div class="usage-action">Resume where you left off</div>
-        <code class="usage-slash">/resume</code>
         <div class="usage-natural">&ldquo;what was I working on&rdquo;</div>
       </div>
       <div class="usage-row">
         <div class="usage-action">List all specs</div>
-        <code class="usage-slash">/list</code>
         <div class="usage-natural">&ldquo;list my specs&rdquo;</div>
       </div>
       <div class="usage-row">
         <div class="usage-action">Show progress</div>
-        <code class="usage-slash">/status</code>
         <div class="usage-natural">&ldquo;spec status&rdquo;</div>
       </div>
       <div class="usage-row">
         <div class="usage-action">Pause with context</div>
-        <code class="usage-slash">/pause</code>
         <div class="usage-natural">&ldquo;pause the spec&rdquo;</div>
       </div>
       <div class="usage-row">
         <div class="usage-action">Switch active spec</div>
-        <code class="usage-slash">/switch my-feature</code>
         <div class="usage-natural">&ldquo;switch to my-feature&rdquo;</div>
       </div>
       <div class="usage-row">
         <div class="usage-action">Generate API docs</div>
-        <code class="usage-slash">/openapi</code>
         <div class="usage-natural">&ldquo;generate openapi&rdquo;</div>
       </div>
     </div>
@@ -1966,7 +1891,7 @@ controllers in src/routes/, middleware in src/middleware/.
         <span class="kluris-terminal-dots"><span></span><span></span><span></span></span>
         <span class="kluris-terminal-label">phase 1b &middot; research</span>
       </div>
-<pre class="kluris-terminal-body"><span class="kt-prompt-mint">&gt;</span> /specmint-core:forge add OAuth sign-in with GitHub
+<pre class="kluris-terminal-body"><span class="kt-prompt-mint">&gt;</span> forge add OAuth sign-in with GitHub
 
 <span class="kt-dim">research · phase 1a · reading codebase ........ done</span>
 <span class="kt-dim">research · phase 1b · querying brain ..........</span>
@@ -2062,13 +1987,6 @@ controllers in src/routes/, middleware in src/middleware/.
   function closeMenu() {
     document.querySelector('.burger').classList.remove('open');
     document.querySelector('.nav-links').classList.remove('open');
-  }
-
-  // Copy install command
-  function copyInstall(el, text) {
-    navigator.clipboard.writeText(text);
-    el.classList.add('copied');
-    setTimeout(() => el.classList.remove('copied'), 1500);
   }
 </script>
 

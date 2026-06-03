@@ -11,7 +11,7 @@ Site purpose lives in the **ngvoicu-sme** brain. Read and write through kluris (
 
 ## What this repo is
 
-A static single-page landing page deployed at **specmint.io**. Built for SEO and link-sharing, **not** as a documentation site — actual docs live in each plugin's `README.md` and `SKILL.md` (specmint-core, specmint-tdd).
+A static single-page landing page deployed at **specmint.io**. Built for SEO and link-sharing, **not** as a documentation site — actual docs live in each skill's `README.md` and `SKILL.md` (specmint-core, specmint-tdd).
 
 ## What's here
 
