@@ -1185,6 +1185,18 @@
     "publisher": { "@type": "Person", "name": "Gabriel Voicu", "url": "https://ngvoicu.dev/" }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "What is spec-driven development?", "acceptedAnswer": {"@type": "Answer", "text": "Spec-driven development means an AI coding agent works from a durable, written specification instead of an ephemeral chat plan. Specmint forges that spec through deep codebase research and developer interviews, stores it in your repository under .specs/, and drives implementation task by task."}},
+      {"@type": "Question", "name": "How do AI coding specs stay persistent across sessions?", "acceptedAnswer": {"@type": "Answer", "text": "Specs live as files in your codebase — Markdown or rich HTML with machine-readable state — and are version-controlled with the rest of your code. Any AI tool can reopen the spec later and resume with full context."}},
+      {"@type": "Question", "name": "Which AI tools does Specmint work with?", "acceptedAnswer": {"@type": "Answer", "text": "Claude Code, Cursor, Windsurf, Cline, Codex, and Gemini CLI — one universal skill per variant, installed with npx skills add."}},
+      {"@type": "Question", "name": "Is Specmint free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — all four Specmint variants are open source under the MIT license."}}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -1921,6 +1933,35 @@ controllers in src/routes/, middleware in src/middleware/.
 </main>
 
 <!-- FOOTER -->
+
+<section class="smt-faq" id="faq">
+  <style>
+    .smt-faq{max-width:880px;margin:0 auto;padding:64px 24px}
+    .smt-faq h2{font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:28px;text-align:center}
+    .smt-faq details{border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:18px 22px;margin-bottom:12px;background:rgba(255,255,255,.02)}
+    .smt-faq summary{font-weight:600;font-size:17px;cursor:pointer;color:#f7f8f8}
+    .smt-faq details p{margin-top:12px;color:#b8bfcc;font-size:15.5px;line-height:1.6}
+    .smt-faq a{color:var(--mint)}
+  </style>
+  <h2>Frequently asked questions</h2>
+  <details>
+    <summary>What is spec-driven development?</summary>
+    <p>Spec-driven development means an AI coding agent works from a durable, written specification instead of an ephemeral chat plan. Specmint forges that spec through deep codebase research and developer interviews, stores it in your repository under <code>.specs/</code>, and drives implementation task by task — so every change traces back to an agreed spec.</p>
+  </details>
+  <details>
+    <summary>How do AI coding specs stay persistent across sessions?</summary>
+    <p>Specs live as files in your codebase — Markdown or rich HTML with machine-readable state — and are version-controlled with the rest of your code. When a session ends, nothing is lost: any AI tool can reopen the spec later, read exactly where work stopped, and resume with full context.</p>
+  </details>
+  <details>
+    <summary>Which AI tools does Specmint work with?</summary>
+    <p>Claude Code, Cursor, Windsurf, Cline, Codex, and Gemini CLI — one universal skill per variant, installed with <code>npx skills add ngvoicu/specmint-tdd-html -g</code> (or the core, core-html, and tdd variants).</p>
+  </details>
+  <details>
+    <summary>Is Specmint free?</summary>
+    <p>Yes — all four Specmint variants are open source under the MIT license. If you want help adopting spec-driven development across a whole team, <a href="https://ngvoicu.dev/#consulting">Gabriel Voicu offers AI-native consulting and training</a>.</p>
+  </details>
+</section>
+
 <!-- ===== ngvoicu consulting section — shared across all ngvoicu sites, keep in sync ===== -->
 <section class="ngv-consult" id="ngv-consulting">
   <style>
