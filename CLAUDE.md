@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Guidance for AI agents working in **specmint-site** — the landing page for specmint.io.
+Guidance for AI agents working in **specmint-site** — the landing page for specmint.ngvoicu.dev.
 
 ## Knowledge base
 
@@ -11,12 +11,12 @@ Site purpose lives in the **ngvoicu-sme** brain. Read and write through kluris (
 
 ## What this repo is
 
-A static single-page landing page deployed at **specmint.io**. Built for SEO and link-sharing, **not** as a documentation site — actual docs live in each skill's `README.md` and `SKILL.md` (specmint-core, specmint-tdd).
+A static single-page landing page deployed at **specmint.ngvoicu.dev**. Built for SEO and link-sharing, **not** as a documentation site — actual docs live in each skill's `README.md` and `SKILL.md` (specmint-core, specmint-tdd).
 
 ## What's here
 
 - `index.html` — single-page HTML with metadata, OG image, sitemap, webmanifest
-- `CNAME` — points to specmint.io
+- `CNAME` — points to specmint.ngvoicu.dev
 - Standard PWA / icon set (favicon, apple-touch-icon, icon-192, icon-512)
 - `og-image.png`, `robots.txt`, `sitemap.xml`
 

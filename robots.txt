@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://specmint.io/sitemap.xml
+Sitemap: https://specmint.ngvoicu.dev/sitemap.xml
