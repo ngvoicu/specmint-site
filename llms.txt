@@ -11,7 +11,7 @@ npx skills add ngvoicu/specmint-core-html -g
 npx skills add ngvoicu/specmint-tdd-html -g
 ```
 
-Works with Claude Code, Codex, Cursor, Windsurf, Cline and Gemini CLI. Free and open source (MIT), by Gabriel Voicu.
+Works with Claude Code, Codex, Cursor, Windsurf, Cline and Gemini CLI. Free and open source (MIT), by [Gabriel Voicu](https://ngvoicu.dev/).
 
 ## Site
 
