@@ -20,6 +20,7 @@ A static single-page landing page deployed at **specmint.ngvoicu.dev**. Built fo
 - Standard PWA / icon set (favicon, apple-touch-icon, icon-192, icon-512)
 - `og-image.png`, `robots.txt` (content signals: search, ai-input and ai-train all yes), `sitemap.xml` (the URL only: no `lastmod` to keep true)
 - `llms.txt` — for AI agents: the hero's lede, the install commands as the page gives them, links to the four skill repositories; keep it in step with the page
+- `fonts/` — DM Serif Display, DM Sans and JetBrains Mono as WOFF2 with their OFL licences, served from the site (no request to Google); `README.md`'s "Fonts" says where they came from and how to refresh them
 - `logo.webp` (92×101) and `kluris-logo.webp` (92×92) — twice the largest size the page draws them at (46px); the full-size Specmint source is `logo.pxd`
 
 No JavaScript framework, no build step.
