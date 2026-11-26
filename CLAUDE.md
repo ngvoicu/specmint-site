@@ -22,6 +22,7 @@ A static single-page landing page deployed at **specmint.ngvoicu.dev**. Built fo
 - `llms.txt` — for AI agents: the hero's lede, the install commands as the page gives them, links to the four skill repositories; keep it in step with the page
 - `fonts/` — DM Serif Display, DM Sans and JetBrains Mono as WOFF2 with their OFL licences, served from the site (no request to Google); `README.md`'s "Fonts" says where they came from and how to refresh them
 - `logo.webp` (92×101) and `kluris-logo.webp` (92×92) — twice the largest size the page draws them at (46px); the full-size Specmint source is `logo.pxd`
+- `preview-core-html.webp` and `preview-tdd-html.webp` (1404 wide, near-lossless WebP) — the gallery's previews, twice the widest the page draws them (702px, one column at 768 wide); each card links its full-size PNG (`preview-*-html.png`), which only a click loads
 
 No JavaScript framework, no build step.
 
