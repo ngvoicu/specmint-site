@@ -1,0 +1,29 @@
+# Specmint
+
+> Specmint is spec-driven development for AI coding agents — turn ephemeral AI plans into persistent, resumable specs built through deep research and iterative interviews. Pick up exactly where you left off.
+
+Specmint comes in four variants, one workflow: specmint-core (Markdown), specmint-core-html (rich HTML), specmint-tdd (test-driven, Markdown) and specmint-tdd-html (test-driven, rich HTML). Each installs as a universal skill — one command, any AI coding tool:
+
+```
+npx skills add ngvoicu/specmint-core -g
+npx skills add ngvoicu/specmint-tdd -g
+npx skills add ngvoicu/specmint-core-html -g
+npx skills add ngvoicu/specmint-tdd-html -g
+```
+
+Works with Claude Code, Codex, Cursor, Windsurf, Cline and Gemini CLI. Free and open source (MIT), by Gabriel Voicu.
+
+## Site
+
+- [Specmint](https://specmint.ngvoicu.dev/): The landing page: the workflow, the four variants, what gets created, install and usage.
+
+## Repositories
+
+- [specmint-core README](https://github.com/ngvoicu/specmint-core#readme): The repository of the standard Markdown variant, producing SPEC.md files.
+- [specmint-core releases](https://github.com/ngvoicu/specmint-core/releases): Its releases.
+- [specmint-core-html README](https://github.com/ngvoicu/specmint-core-html#readme): The repository of the standard rich HTML variant, producing SPEC.html files.
+- [specmint-core-html releases](https://github.com/ngvoicu/specmint-core-html/releases): Its releases.
+- [specmint-tdd README](https://github.com/ngvoicu/specmint-tdd#readme): The repository of the test-driven Markdown variant: the core workflow plus strict red-green-refactor.
+- [specmint-tdd releases](https://github.com/ngvoicu/specmint-tdd/releases): Its releases.
+- [specmint-tdd-html README](https://github.com/ngvoicu/specmint-tdd-html#readme): The repository of the test-driven rich HTML variant.
+- [specmint-tdd-html releases](https://github.com/ngvoicu/specmint-tdd-html/releases): Its releases.

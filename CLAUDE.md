@@ -18,7 +18,9 @@ A static single-page landing page deployed at **specmint.ngvoicu.dev**. Built fo
 - `index.html` — single-page HTML with metadata, OG image, sitemap, webmanifest
 - `CNAME` — points to specmint.ngvoicu.dev
 - Standard PWA / icon set (favicon, apple-touch-icon, icon-192, icon-512)
-- `og-image.png`, `robots.txt`, `sitemap.xml`
+- `og-image.png`, `robots.txt` (content signals: search, ai-input and ai-train all yes), `sitemap.xml` (the URL only: no `lastmod` to keep true)
+- `llms.txt` — for AI agents: the hero's lede, the install commands as the page gives them, links to the four skill repositories; keep it in step with the page
+- `logo.webp` (92×101) and `kluris-logo.webp` (92×92) — twice the largest size the page draws them at (46px); the full-size Specmint source is `logo.pxd`
 
 No JavaScript framework, no build step.
 

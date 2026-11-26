@@ -1,4 +1,6 @@
+# Content signals (contentsignals.org): search, AI input and AI training are all allowed.
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 
 Sitemap: https://specmint.ngvoicu.dev/sitemap.xml
